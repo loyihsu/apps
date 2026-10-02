@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Join the Beta — Piona</title>
-    <meta name="twitter:title" content="Join the Beta — Piona"/>
-    <meta property="og:title" content="Join the Beta — Piona"/>
+    <title>The Beta — Piona</title>
+    <meta name="twitter:title" content="The Beta — Piona"/>
+    <meta property="og:title" content="The Beta — Piona"/>
     <meta name="description" content="Test Piona before it is released: who can join, how to join through TestFlight, and what testers are asked to do."/>
     <meta name="twitter:description" content="Test Piona before it is released: who can join, how to join through TestFlight, and what testers are asked to do."/>
     <meta property="og:description" content="Test Piona before it is released: who can join, how to join through TestFlight, and what testers are asked to do."/>
@@ -215,6 +215,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   font-weight: 500;
   padding: 7px 12px;
   border-radius: 999px;
+  white-space: nowrap;
 }
 .site-nav a:hover { color: var(--on-surface); background: var(--surface-container); text-decoration: none; }
 .site-nav a[aria-current="page"] { color: var(--on-surface); background: var(--surface-container); }
@@ -779,6 +780,8 @@ tbody tr:last-child td { border-bottom: none; }
 
 @media (max-width: 560px) {
   .site-nav__features { display: none; }
+  /* Both languages no longer fit beside the links: offer only the one to switch to. */
+  .lang-switch a[aria-current="true"] { display: none; }
 }
 
 @media (max-width: 400px) {
@@ -813,11 +816,12 @@ tbody tr:last-child td { border-bottom: none; }
             <a href="../tw/beta/" hreflang="zh-Hant" aria-current="false">繁體中文</a></div></nav></div></header>
     <main id="main">
       <article class="doc">
-        <div class="wrap">          <div class="doc__head" data-reveal="true" style="--reveal-delay: 0ms">
+        <div class="wrap">
+          <div class="doc__head" data-reveal="true" style="--reveal-delay: 0ms">
             <p class="eyebrow">Beta</p>
-            <h1>Join the Piona beta</h1>
-            <p class="doc__lede">Piona is in closed testing on iOS through TestFlight, Apple's app for trying apps before they are released. Testers get each new build and can send feedback straight from their iPhone.</p>
-            <p class="doc__updated">Last updated 27 September 2026</p></div>
+            <h1>The Piona beta</h1>
+            <p class="doc__lede">Piona's closed testing on iOS opens soon through TestFlight, Apple's app for trying apps before they are released. Testers will get each new build and can send feedback straight from their iPhone.</p>
+            <p class="doc__updated">Last updated 2 October 2026</p></div>
           <div class="doc__body">
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Who can join</h2>
 
@@ -847,7 +851,9 @@ tbody tr:last-child td { border-bottom: none; }
 
 
 </section></div>
-</div></article></main>
+          <div class="callout" data-reveal="true" style="--reveal-delay: 0ms">            <h2>Opening soon</h2>
+            <p>Testing has not started yet. The join link appears here as soon as TestFlight accepts testers.</p>
+</div></div></article></main>
     <footer class="site-footer">
       <div class="wrap site-footer__inner">
         <div class="site-footer__brand">

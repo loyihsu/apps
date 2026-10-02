@@ -6,9 +6,9 @@
     <title>Piona — a podcast player built around playlists</title>
     <meta name="twitter:title" content="Piona — a podcast player built around playlists"/>
     <meta property="og:title" content="Piona — a podcast player built around playlists"/>
-    <meta name="description" content="Piona is a podcast player built around playlists, now in iOS beta testing with Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
-    <meta name="twitter:description" content="Piona is a podcast player built around playlists, now in iOS beta testing with Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
-    <meta property="og:description" content="Piona is a podcast player built around playlists, now in iOS beta testing with Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
+    <meta name="description" content="Piona is a podcast player built around playlists, with its iOS beta opening soon and Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
+    <meta name="twitter:description" content="Piona is a podcast player built around playlists, with its iOS beta opening soon and Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
+    <meta property="og:description" content="Piona is a podcast player built around playlists, with its iOS beta opening soon and Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
     <meta name="twitter:image" content="https://apps.loyi.dev/piona/assets/piona-social.png"/>
     <meta property="og:image" content="https://apps.loyi.dev/piona/assets/piona-social.png"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -215,6 +215,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   font-weight: 500;
   padding: 7px 12px;
   border-radius: 999px;
+  white-space: nowrap;
 }
 .site-nav a:hover { color: var(--on-surface); background: var(--surface-container); text-decoration: none; }
 .site-nav a[aria-current="page"] { color: var(--on-surface); background: var(--surface-container); }
@@ -779,6 +780,8 @@ tbody tr:last-child td { border-bottom: none; }
 
 @media (max-width: 560px) {
   .site-nav__features { display: none; }
+  /* Both languages no longer fit beside the links: offer only the one to switch to. */
+  .lang-switch a[aria-current="true"] { display: none; }
 }
 
 @media (max-width: 400px) {
@@ -816,13 +819,13 @@ tbody tr:last-child td { border-bottom: none; }
         <div class="wrap">
           <div class="hero__grid">
             <div class="hero__copy">
-              <p class="eyebrow" data-reveal="true" style="--reveal-delay: 0ms">iOS TestFlight beta open · Android to follow</p>
+              <p class="eyebrow" data-reveal="true" style="--reveal-delay: 0ms">iOS TestFlight beta opening soon · Android to follow</p>
               <h1 data-reveal="true" style="--reveal-delay: 70ms">Podcasts, in as many lists as you like.</h1>
               <p class="hero__sub" data-reveal="true" style="--reveal-delay: 140ms">Keep one playlist for the commute, another for long walks, and another for shows you want to sit down with. Your queue is just one more playlist.</p>
               <div class="hero__actions" data-reveal="true" style="--reveal-delay: 210ms">
                 <div class="store-badge store-badge--primary">
                   <span class="store-badge__label">iOS TestFlight beta</span>
-                  <span class="store-badge__detail">Open for testing</span></div>
+                  <span class="store-badge__detail">Opening soon</span></div>
                 <div class="store-badge">
                   <span class="store-badge__label">Android coming later</span>
                   <span class="store-badge__detail">Google Play release planned</span></div></div>
@@ -982,23 +985,23 @@ tbody tr:last-child td { border-bottom: none; }
         <div class="wrap">
           <div class="section__head" data-reveal="true" style="--reveal-delay: 0ms">
             <p class="eyebrow">Availability</p>
-            <h2>iOS beta now, Android later.</h2>
+            <h2>iOS beta soon, Android later.</h2>
             <p>Piona is built for iOS and Android on a shared core. Each app follows its platform's design; feature availability is confirmed for each release.</p></div>
           <div class="cards cards--2">
             <div class="platform" data-reveal="true" style="--reveal-delay: 0ms">
               <h3>iOS</h3>
               <p>iPhone, iOS 26 or later</p>
-              <span class="pill">In closed testing</span></div>
+              <span class="pill">Closed testing opens soon</span></div>
             <div class="platform" data-reveal="true" style="--reveal-delay: 70ms">
               <h3>Android</h3>
               <p>Phones, Android 9 or later</p>
               <span class="pill">Coming later</span></div></div></div></section>
       <section class="closing">
         <div class="wrap">
-          <h2 data-reveal="true" style="--reveal-delay: 0ms">Piona is in closed beta.</h2>
-          <p data-reveal="true" style="--reveal-delay: 70ms">It is being tested on iOS through TestFlight, with Android to follow. Join the beta, or check back once Piona is in the stores.</p>
+          <h2 data-reveal="true" style="--reveal-delay: 0ms">Piona's closed beta opens soon.</h2>
+          <p data-reveal="true" style="--reveal-delay: 70ms">Testing starts on iOS through TestFlight, with Android to follow. See how the beta will work, or check back once Piona is in the stores.</p>
           <div class="closing__badge" data-reveal="true" style="--reveal-delay: 140ms">
-            <a href="beta/">Join the beta</a></div>
+            <a href="beta/">About the beta</a></div>
           <p class="closing__detail" data-reveal="true" style="--reveal-delay: 210ms">
 Questions? Write to 
             <a href="mailto:works@loyi.dev">works@loyi.dev</a></p></div></section></main>

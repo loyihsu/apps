@@ -6,9 +6,9 @@
     <title>Piona — 以播放列表為核心的 Podcast 播放器</title>
     <meta name="twitter:title" content="Piona — 以播放列表為核心的 Podcast 播放器"/>
     <meta property="og:title" content="Piona — 以播放列表為核心的 Podcast 播放器"/>
-    <meta name="description" content="Piona 是以播放列表為核心的 Podcast 播放器，目前開放 iOS 測試，Android 隨後推出。播放列表想建幾份都可以，也能加入自己的音檔資料夾、離線收聽，不需要帳號，也沒有任何追蹤。"/>
-    <meta name="twitter:description" content="Piona 是以播放列表為核心的 Podcast 播放器，目前開放 iOS 測試，Android 隨後推出。播放列表想建幾份都可以，也能加入自己的音檔資料夾、離線收聽，不需要帳號，也沒有任何追蹤。"/>
-    <meta property="og:description" content="Piona 是以播放列表為核心的 Podcast 播放器，目前開放 iOS 測試，Android 隨後推出。播放列表想建幾份都可以，也能加入自己的音檔資料夾、離線收聽，不需要帳號，也沒有任何追蹤。"/>
+    <meta name="description" content="Piona 是以播放列表為核心的 Podcast 播放器，iOS 測試即將開放，Android 隨後推出。播放列表想建幾份都可以，也能加入自己的音檔資料夾、離線收聽，不需要帳號，也沒有任何追蹤。"/>
+    <meta name="twitter:description" content="Piona 是以播放列表為核心的 Podcast 播放器，iOS 測試即將開放，Android 隨後推出。播放列表想建幾份都可以，也能加入自己的音檔資料夾、離線收聽，不需要帳號，也沒有任何追蹤。"/>
+    <meta property="og:description" content="Piona 是以播放列表為核心的 Podcast 播放器，iOS 測試即將開放，Android 隨後推出。播放列表想建幾份都可以，也能加入自己的音檔資料夾、離線收聽，不需要帳號，也沒有任何追蹤。"/>
     <meta name="twitter:image" content="https://apps.loyi.dev/piona/assets/piona-social-tw.png"/>
     <meta property="og:image" content="https://apps.loyi.dev/piona/assets/piona-social-tw.png"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -215,6 +215,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   font-weight: 500;
   padding: 7px 12px;
   border-radius: 999px;
+  white-space: nowrap;
 }
 .site-nav a:hover { color: var(--on-surface); background: var(--surface-container); text-decoration: none; }
 .site-nav a[aria-current="page"] { color: var(--on-surface); background: var(--surface-container); }
@@ -779,6 +780,8 @@ tbody tr:last-child td { border-bottom: none; }
 
 @media (max-width: 560px) {
   .site-nav__features { display: none; }
+  /* Both languages no longer fit beside the links: offer only the one to switch to. */
+  .lang-switch a[aria-current="true"] { display: none; }
 }
 
 @media (max-width: 400px) {
@@ -816,14 +819,14 @@ tbody tr:last-child td { border-bottom: none; }
         <div class="wrap">
           <div class="hero__grid">
             <div class="hero__copy">
-              <p class="eyebrow" data-reveal="true" style="--reveal-delay: 0ms">iOS TestFlight 測試開放・Android 稍後推出</p>
+              <p class="eyebrow" data-reveal="true" style="--reveal-delay: 0ms">iOS TestFlight 測試即將開放・Android 稍後推出</p>
               <h1 data-reveal="true" style="--reveal-delay: 70ms">播放列表，
 想分幾份就分幾份。</h1>
               <p class="hero__sub" data-reveal="true" style="--reveal-delay: 140ms">通勤一份、散步一份、想專心聽的節目再一份。待播清單也只是其中一份。</p>
               <div class="hero__actions" data-reveal="true" style="--reveal-delay: 210ms">
                 <div class="store-badge store-badge--primary">
                   <span class="store-badge__label">iOS TestFlight 測試</span>
-                  <span class="store-badge__detail">目前開放加入</span></div>
+                  <span class="store-badge__detail">即將開放</span></div>
                 <div class="store-badge">
                   <span class="store-badge__label">Android 稍後推出</span>
                   <span class="store-badge__detail">預計登上 Google Play</span></div></div>
@@ -985,24 +988,24 @@ tbody tr:last-child td { border-bottom: none; }
         <div class="wrap">
           <div class="section__head" data-reveal="true" style="--reveal-delay: 0ms">
             <p class="eyebrow">支援平台</p>
-            <h2>iOS 測試開放，
+            <h2>iOS 測試即將開放，
 Android 隨後推出。</h2>
             <p>Piona 以共用核心打造 iOS 與 Android 版本，各自依照平台設計；功能支援情況會以各版本實際發布內容為準。</p></div>
           <div class="cards cards--2">
             <div class="platform" data-reveal="true" style="--reveal-delay: 0ms">
               <h3>iOS</h3>
               <p>iPhone，iOS 26 以上</p>
-              <span class="pill">封閉測試中</span></div>
+              <span class="pill">封閉測試即將開放</span></div>
             <div class="platform" data-reveal="true" style="--reveal-delay: 70ms">
               <h3>Android</h3>
               <p>手機，Android 9 以上</p>
               <span class="pill">稍後推出</span></div></div></div></section>
       <section class="closing">
         <div class="wrap">
-          <h2 data-reveal="true" style="--reveal-delay: 0ms">Piona 正在封閉測試中。</h2>
-          <p data-reveal="true" style="--reveal-delay: 70ms">目前透過 TestFlight 在 iOS 上測試，Android 會晚一點推出。歡迎加入測試，或等 Piona 上架後再回來看看。</p>
+          <h2 data-reveal="true" style="--reveal-delay: 0ms">Piona 封閉測試即將開放。</h2>
+          <p data-reveal="true" style="--reveal-delay: 70ms">測試會先透過 TestFlight 在 iOS 上進行，Android 會晚一點推出。可以先看看測試怎麼進行，或等 Piona 上架後再回來看看。</p>
           <div class="closing__badge" data-reveal="true" style="--reveal-delay: 140ms">
-            <a href="beta/">加入測試</a></div>
+            <a href="beta/">了解測試</a></div>
           <p class="closing__detail" data-reveal="true" style="--reveal-delay: 210ms">
 有問題歡迎來信 
             <a href="mailto:works@loyi.dev">works@loyi.dev</a></p></div></section></main>

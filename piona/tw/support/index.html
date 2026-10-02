@@ -215,6 +215,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   font-weight: 500;
   padding: 7px 12px;
   border-radius: 999px;
+  white-space: nowrap;
 }
 .site-nav a:hover { color: var(--on-surface); background: var(--surface-container); text-decoration: none; }
 .site-nav a[aria-current="page"] { color: var(--on-surface); background: var(--surface-container); }
@@ -779,6 +780,8 @@ tbody tr:last-child td { border-bottom: none; }
 
 @media (max-width: 560px) {
   .site-nav__features { display: none; }
+  /* Both languages no longer fit beside the links: offer only the one to switch to. */
+  .lang-switch a[aria-current="true"] { display: none; }
 }
 
 @media (max-width: 400px) {
