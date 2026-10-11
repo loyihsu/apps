@@ -662,6 +662,19 @@ tbody tr:last-child td { border-bottom: none; }
 .doc__lede { margin-top: 20px; font-size: 19px; color: var(--on-surface-variant); }
 .doc__updated { margin-top: 22px; font-size: 14px; color: var(--outline); }
 
+.doc__tabs { display: flex; width: fit-content; gap: 2px; padding: 4px; margin-bottom: clamp(28px, 4vw, 40px); background: var(--surface-container); border-radius: 999px; }
+.doc__tabs a { padding: 10px 24px; font-size: 15px; font-weight: 600; border-radius: 999px; color: var(--on-surface-variant); }
+.doc__tabs a:hover { color: var(--on-surface); text-decoration: none; }
+.doc__tabs a[aria-current="true"] { background: var(--primary-container); color: var(--on-primary-container); }
+/* The address fragment names the anchor in front of a panel. That panel is shown; with no
+   fragment, the last one is. An anchor fixed to the viewport is always in view, so opening a
+   tab never scrolls the page. */
+.doc__tab-anchor { position: fixed; top: 0; }
+.doc__panel { display: none; }
+.doc__tab-anchor:target + .doc__panel, .doc__panel:last-child { display: block; }
+.doc__tab-anchor:target ~ .doc__panel:last-child { display: none; }
+.doc__tab-anchor:target + .doc__panel:last-child { display: block; }
+
 .doc__body { max-width: var(--measure); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 44px); }
 .doc section h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.015em; }
 .doc section > * + * { margin-top: 14px; }
@@ -676,6 +689,7 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: 50%;
   background: var(--primary);
 }
+.doc__link { font-weight: 600; }
 
 .callout {
   margin-top: clamp(40px, 5vw, 56px);
@@ -831,10 +845,12 @@ tbody tr:last-child td { border-bottom: none; }
                 <li>設定裡顯示的 Piona 版本與組建編號。</li>
                 <li>你做了什麼、預期會發生什麼、實際上發生了什麼。</li>
                 <li>如果和某個節目有關，請附上節目名稱或它的 RSS 摘要網址。</li></ul>
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>搜尋不到某個節目</h2>
               <p>搜尋的範圍是 Apple 的公開 Podcast 目錄，沒有登錄在那裡的節目就搜尋不到。你仍然可以用 RSS 摘要網址追蹤它：在「資料庫」分頁點「加入來源」，再選「加入 RSS 摘要」。</p>
               <p>搜尋只找節目，不找個別單集。標示為成人的節目不會出現在結果裡，除非你已在設定裡開啟成人內容。</p>
+
 
 
 </section>
@@ -843,10 +859,12 @@ tbody tr:last-child td { border-bottom: none; }
               <p>Piona 會掃描系統判定為音訊的檔案，以及 mp3、m4a、aac、wav、ogg、oga、flac、opus 等常見音訊副檔名。檔案能否播放仍取決於裝置支援的編碼格式。單集依檔案日期排序，最新的在前，長度則讀自各檔案的中繼資料。如果資料夾看起來是空的，請檢查檔案與 Piona 的資料夾存取權。</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>下載</h2>
               <p>所有下載共用一條佇列，就算離開開始下載的頁面也會繼續。最多同時下載兩集，並依照你加入的順序進行。</p>
               <p>每批下載開始之前，Piona 會確認空間足夠，並保留 250 MB 的空間。如果不夠，它會告訴你還差多少，而不是先開始、下到一半才失敗。有些摘要沒有標示單集大小，含有這類單集的批次會顯示為「至少」多少容量。</p>
+
 
 
 </section>
@@ -854,14 +872,17 @@ tbody tr:last-child td { border-bottom: none; }
               <p>目前不行。Piona 沒有帳號也沒有伺服器，所以能不蒐集任何資料；也因為這樣，每台裝置的資料各自獨立。我們有在考慮同步功能，但如果要做，也會維持同樣的隱私保證。</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>iPad、Mac、CarPlay 與 Android Auto</h2>
               <p>目前都還沒有。Piona 是為 iPhone 與 Android 手機設計的；在 iPad 上會以 iPhone App 的形式執行，也沒有 Mac App、CarPlay 或 Android Auto 支援。影片 Podcast 與有聲書同樣不支援。</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>回報問題或建議新功能</h2>
               <p>兩者都寄到同一個信箱。回報問題時，附上上面列出的資訊最有幫助；建議新功能時，可以說明你想解決的問題。</p>
+
 
 
 </section></div>

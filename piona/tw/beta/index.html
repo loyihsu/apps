@@ -6,9 +6,9 @@
     <title>加入測試 — Piona</title>
     <meta name="twitter:title" content="加入測試 — Piona"/>
     <meta property="og:title" content="加入測試 — Piona"/>
-    <meta name="description" content="在正式推出前試用 Piona：誰可以參加、如何透過 TestFlight 加入，以及測試者要做什麼。"/>
-    <meta name="twitter:description" content="在正式推出前試用 Piona：誰可以參加、如何透過 TestFlight 加入，以及測試者要做什麼。"/>
-    <meta property="og:description" content="在正式推出前試用 Piona：誰可以參加、如何透過 TestFlight 加入，以及測試者要做什麼。"/>
+    <meta name="description" content="在正式推出前試用 Piona：誰可以參加、如何在 iOS 上透過 TestFlight 或在 Android 上透過 Google Play 加入，以及測試者要做什麼。"/>
+    <meta name="twitter:description" content="在正式推出前試用 Piona：誰可以參加、如何在 iOS 上透過 TestFlight 或在 Android 上透過 Google Play 加入，以及測試者要做什麼。"/>
+    <meta property="og:description" content="在正式推出前試用 Piona：誰可以參加、如何在 iOS 上透過 TestFlight 或在 Android 上透過 Google Play 加入，以及測試者要做什麼。"/>
     <meta name="twitter:image" content="https://apps.loyi.dev/piona/assets/piona-social-tw.png"/>
     <meta property="og:image" content="https://apps.loyi.dev/piona/assets/piona-social-tw.png"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -662,6 +662,19 @@ tbody tr:last-child td { border-bottom: none; }
 .doc__lede { margin-top: 20px; font-size: 19px; color: var(--on-surface-variant); }
 .doc__updated { margin-top: 22px; font-size: 14px; color: var(--outline); }
 
+.doc__tabs { display: flex; width: fit-content; gap: 2px; padding: 4px; margin-bottom: clamp(28px, 4vw, 40px); background: var(--surface-container); border-radius: 999px; }
+.doc__tabs a { padding: 10px 24px; font-size: 15px; font-weight: 600; border-radius: 999px; color: var(--on-surface-variant); }
+.doc__tabs a:hover { color: var(--on-surface); text-decoration: none; }
+.doc__tabs a[aria-current="true"] { background: var(--primary-container); color: var(--on-primary-container); }
+/* The address fragment names the anchor in front of a panel. That panel is shown; with no
+   fragment, the last one is. An anchor fixed to the viewport is always in view, so opening a
+   tab never scrolls the page. */
+.doc__tab-anchor { position: fixed; top: 0; }
+.doc__panel { display: none; }
+.doc__tab-anchor:target + .doc__panel, .doc__panel:last-child { display: block; }
+.doc__tab-anchor:target ~ .doc__panel:last-child { display: none; }
+.doc__tab-anchor:target + .doc__panel:last-child { display: block; }
+
 .doc__body { max-width: var(--measure); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 44px); }
 .doc section h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.015em; }
 .doc section > * + * { margin-top: 14px; }
@@ -676,6 +689,7 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: 50%;
   background: var(--primary);
 }
+.doc__link { font-weight: 600; }
 
 .callout {
   margin-top: clamp(40px, 5vw, 56px);
@@ -820,41 +834,93 @@ tbody tr:last-child td { border-bottom: none; }
           <div class="doc__head" data-reveal="true" style="--reveal-delay: 0ms">
             <p class="eyebrow">測試版</p>
             <h1>加入 Piona 測試</h1>
-            <p class="doc__lede">Piona 正透過 TestFlight 在 iOS 上進行封閉測試。TestFlight 是 Apple 用來在 App 上架前試用的 App。測試者會收到每一個新版本，也能直接從 iPhone 送出意見回饋。</p>
-            <p class="doc__updated">最後更新於 2026 年 10 月 3 日</p></div>
-          <div class="doc__body">
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>誰可以參加</h2>
+            <p class="doc__lede">Piona 正透過 TestFlight 在 iOS 上進行封閉測試。TestFlight 是 Apple 用來在 App 上架前試用的 App。Android 版即將透過 Google Play 開放封閉測試。測試者會收到每一個新版本，也能直接從手機送出意見回饋。</p>
+            <p class="doc__updated">最後更新於 2026 年 10 月 11 日</p></div>
+          <div class="doc__tabbed">
+            <span class="doc__tab-anchor" id="android"></span>
+            <div class="doc__panel">              <nav class="doc__tabs" aria-label="平台">
+                <a href="#ios" aria-current="false">iOS</a>
+                <a href="#android" aria-current="true">Android</a></nav>
+              <div class="doc__body">
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>誰可以參加</h2>
 
 
-              <ul class="doc__bullets">
-                <li>有一支 iOS 26 以上的 iPhone。</li>
-                <li>需要安裝 App Store 上免費的 TestFlight。</li>
-                <li>名額有限，額滿後連結就不再接受新的測試者。</li></ul>
-</section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">
-              <h2>如何加入</h2>
-
-
-              <ul class="doc__bullets">
-                <li>在 iPhone 上安裝 TestFlight。</li>
-                <li>用同一支 iPhone 打開 Piona 的 TestFlight 邀請連結。</li>
-                <li>點「接受」，再點「安裝」。Piona 會像其他 App 一樣出現在主畫面上。</li></ul>
-              <p>之後的新版本會透過 TestFlight 送達，也可以讓它自動幫你更新。</p></section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>我們希望測試者做的事</h2>
-              <p>像使用任何 Podcast App 一樣使用 Piona，遇到卡住的地方就告訴我們：閃退、結果不對，或是某件事花了比預期更久的時間。</p>
-              <p>回報時，截圖後點「分享 Beta 版意見回饋」，或打開 TestFlight 點「傳送 Beta 版意見回饋」。Piona 設定頁的「測試版」區塊也有同樣的步驟。</p>
-
+                  <ul class="doc__bullets">
+                    <li>有一支 Android 9 以上的手機，處理器為 64 位元 ARM；近幾年推出的手機大多符合。</li>
+                    <li>需要 Google 帳號，手機上也要有 Google Play。</li></ul>
 
 </section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>測試期間的隱私</h2>
-              <p>Piona 本身不蒐集任何資料，測試期間也一樣——詳見隱私權政策。TestFlight 是 Apple 的服務，會讓我們看到每位測試者的裝置、系統版本與 App 版本、使用次數與閃退次數，以及你選擇送出的意見回饋。透過公開連結加入的話，我們看不到你的姓名和 email。</p>
+                <section data-reveal="true" style="--reveal-delay: 0ms">
+                  <h2>如何加入</h2>
+                  <p>Android 測試還沒開始。Google Play 開始接受測試者後，加入用的兩個連結就會出現在這裡。</p>
+
+                  <ul class="doc__bullets">
+                    <li>加入 Piona 測試者的 Google 群組。任何人都能自行加入，不需要等人核准。</li>
+                    <li>用同一個 Google 帳號打開 Piona 在 Google Play 的測試頁面，選擇成為測試人員。</li>
+                    <li>再從那個頁面前往 Google Play 安裝 Piona。</li></ul>
+
+                  <p>只加入群組還不算參加測試，要完成 Google Play 那一步才算。如果這個帳號已經在 Piona 的內部測試裡，請先退出內部測試。</p>
+                  <p>之後的新版本會像一般 App 更新一樣，透過 Google Play 送達。</p></section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>我們希望測試者做的事</h2>
+                  <p>像使用任何 Podcast App 一樣使用 Piona，遇到卡住的地方就告訴我們：閃退、結果不對，或是某件事花了比預期更久的時間。</p>
+                  <p>回報時，可以從 Google Play 的 Piona 頁面送出私人測試意見，或寫信到 works@loyi.dev，附上 Piona 版本、裝置與 Android 版本，以及重現問題的步驟；建議先移除截圖中的私人資訊。Piona 設定頁的「測試版」區塊也列出了要附上的資訊。</p>
+
+
+
+</section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>測試期間的隱私</h2>
+                  <p>Piona 本身不會回傳任何資料給我們，測試期間也一樣——詳見隱私權政策。</p>
+                  <p>Google Play 是 Google 的服務。Android 測試者要先加入一個 Google 群組；我們是群組擁有者，看得到成員的 email。你透過 Google Play 送出的私人測試意見會交給我們；閃退與效能報告則透過 Android vitals 提供給我們，只涵蓋擁有者同意與 Google 分享診斷資料的裝置。</p>
+                  <p>如果你寫信給我們，我們會收到你的 email 地址，以及你寫下或附上的內容。信件的保存方式詳見隱私權政策。</p>
+
 
 
 </section></div>
-          <div class="callout" data-reveal="true" style="--reveal-delay: 0ms">
-            <h2>準備好了嗎？</h2>
-            <p>用 iPhone 打開這一頁，點下方連結透過 TestFlight 加入。</p>
-            <a href="https://testflight.apple.com/join/6jwR3ywx" class="callout__action">在 TestFlight 加入</a></div></div></article></main>
+</div>
+            <span class="doc__tab-anchor" id="ios"></span>
+            <div class="doc__panel">
+              <nav class="doc__tabs" aria-label="平台">
+                <a href="#ios" aria-current="true">iOS</a>
+                <a href="#android" aria-current="false">Android</a></nav>
+              <div class="doc__body">
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>誰可以參加</h2>
+
+
+                  <ul class="doc__bullets">
+                    <li>有一支 iOS 26 以上的 iPhone。</li>
+                    <li>需要安裝 App Store 上免費的 TestFlight。</li>
+                    <li>名額有限，額滿後連結就不再接受新的測試者。</li></ul>
+
+</section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">
+                  <h2>如何加入</h2>
+
+
+                  <ul class="doc__bullets">
+                    <li>在 iPhone 上安裝 TestFlight。</li>
+                    <li>用同一支 iPhone 打開 Piona 的 TestFlight 邀請連結。</li>
+                    <li>點「接受」，再點「安裝」。Piona 會像其他 App 一樣出現在主畫面上。</li></ul>
+
+                  <p>之後的新版本會透過 TestFlight 送達，也可以讓它自動幫你更新。</p></section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>我們希望測試者做的事</h2>
+                  <p>像使用任何 Podcast App 一樣使用 Piona，遇到卡住的地方就告訴我們：閃退、結果不對，或是某件事花了比預期更久的時間。</p>
+                  <p>回報時，截圖後點「分享 Beta 版意見回饋」，或打開 TestFlight 點「傳送 Beta 版意見回饋」。Piona 設定頁的「測試版」區塊也有同樣的步驟。</p>
+
+
+
+</section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>測試期間的隱私</h2>
+                  <p>Piona 本身不會回傳任何資料給我們，測試期間也一樣——詳見隱私權政策。</p>
+                  <p>TestFlight 是 Apple 的服務，會讓我們看到每位測試者的裝置、系統版本與 App 版本、使用次數與閃退次數，以及你選擇送出的意見回饋。透過公開連結加入的話，我們看不到你的姓名和 email。</p>
+                  <p>如果你寫信給我們，我們會收到你的 email 地址，以及你寫下或附上的內容。信件的保存方式詳見隱私權政策。</p>
+
+
+
+</section></div>
+              <div class="callout" data-reveal="true" style="--reveal-delay: 0ms">
+                <h2>準備好了嗎？</h2>
+                <p>用 iPhone 打開這一頁，點下方連結透過 TestFlight 加入。</p>
+                <a href="https://testflight.apple.com/join/6jwR3ywx" class="callout__action">在 TestFlight 加入</a></div></div></div></div></article></main>
     <footer class="site-footer">
       <div class="wrap site-footer__inner">
         <div class="site-footer__brand">

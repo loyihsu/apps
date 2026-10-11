@@ -662,6 +662,19 @@ tbody tr:last-child td { border-bottom: none; }
 .doc__lede { margin-top: 20px; font-size: 19px; color: var(--on-surface-variant); }
 .doc__updated { margin-top: 22px; font-size: 14px; color: var(--outline); }
 
+.doc__tabs { display: flex; width: fit-content; gap: 2px; padding: 4px; margin-bottom: clamp(28px, 4vw, 40px); background: var(--surface-container); border-radius: 999px; }
+.doc__tabs a { padding: 10px 24px; font-size: 15px; font-weight: 600; border-radius: 999px; color: var(--on-surface-variant); }
+.doc__tabs a:hover { color: var(--on-surface); text-decoration: none; }
+.doc__tabs a[aria-current="true"] { background: var(--primary-container); color: var(--on-primary-container); }
+/* The address fragment names the anchor in front of a panel. That panel is shown; with no
+   fragment, the last one is. An anchor fixed to the viewport is always in view, so opening a
+   tab never scrolls the page. */
+.doc__tab-anchor { position: fixed; top: 0; }
+.doc__panel { display: none; }
+.doc__tab-anchor:target + .doc__panel, .doc__panel:last-child { display: block; }
+.doc__tab-anchor:target ~ .doc__panel:last-child { display: none; }
+.doc__tab-anchor:target + .doc__panel:last-child { display: block; }
+
 .doc__body { max-width: var(--measure); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 44px); }
 .doc section h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.015em; }
 .doc section > * + * { margin-top: 14px; }
@@ -676,6 +689,7 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: 50%;
   background: var(--primary);
 }
+.doc__link { font-weight: 600; }
 
 .callout {
   margin-top: clamp(40px, 5vw, 56px);
@@ -831,10 +845,12 @@ tbody tr:last-child td { border-bottom: none; }
                 <li>The Piona version and build number, shown in Settings.</li>
                 <li>What you did, what you expected, and what happened instead.</li>
                 <li>If it concerns one show, the show's name or its feed address.</li></ul>
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>A show does not appear in search</h2>
               <p>Search covers Apple's public podcast directory, so a show that is not listed there will not appear. You can still follow it by its feed address: in the Library tab, tap Add Source, then Add RSS Feed.</p>
               <p>Search finds shows, not individual episodes. Shows marked explicit are left out unless explicit content is turned on in Settings.</p>
+
 
 
 </section>
@@ -843,10 +859,12 @@ tbody tr:last-child td { border-bottom: none; }
               <p>Piona scans files reported as audio by your system and files with common audio extensions, including mp3, m4a, aac, wav, ogg, oga, flac and opus. Whether a file plays depends on the codecs supported by your device. Episodes are sorted by file date, newest first, and durations come from each file's metadata. If a folder looks empty, check its files and Piona's access to the folder.</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Downloads</h2>
               <p>All downloads share one queue, which keeps going when you leave the page you started them from. Up to two download at once, in the order you added them.</p>
               <p>Before a batch starts, Piona checks that it fits while leaving 250 MB free. If it does not, Piona tells you how much space is missing instead of starting and failing part-way. Some feeds do not list episode sizes, so batches that include them show "at least" a given size.</p>
+
 
 
 </section>
@@ -854,14 +872,17 @@ tbody tr:last-child td { border-bottom: none; }
               <p>Not at the moment. Piona has no account and no server, which is how it avoids collecting anything, and also why each device keeps its own library. Sync is under consideration, but only in a form that keeps the same guarantees.</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>iPad, Mac, CarPlay and Android Auto</h2>
               <p>Not yet. Piona is made for iPhone and Android phones. On iPad it runs as an iPhone app, and there is no Mac app and no CarPlay or Android Auto support. Video podcasts and audiobooks are not supported either.</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Reporting a bug or suggesting a feature</h2>
               <p>Both go to the same address. For a bug, the details listed above help most. For a feature, it helps to describe the problem you want solved.</p>
+
 
 
 </section></div>

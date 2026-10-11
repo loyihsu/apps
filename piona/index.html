@@ -6,9 +6,9 @@
     <title>Piona — a podcast player built around playlists</title>
     <meta name="twitter:title" content="Piona — a podcast player built around playlists"/>
     <meta property="og:title" content="Piona — a podcast player built around playlists"/>
-    <meta name="description" content="Piona is a podcast player built around playlists, now in iOS beta testing with Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
-    <meta name="twitter:description" content="Piona is a podcast player built around playlists, now in iOS beta testing with Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
-    <meta property="og:description" content="Piona is a podcast player built around playlists, now in iOS beta testing with Android to follow. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
+    <meta name="description" content="Piona is a podcast player built around playlists. Its iOS beta is open, and its Android beta opens soon. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
+    <meta name="twitter:description" content="Piona is a podcast player built around playlists. Its iOS beta is open, and its Android beta opens soon. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
+    <meta property="og:description" content="Piona is a podcast player built around playlists. Its iOS beta is open, and its Android beta opens soon. Keep as many playlists as you like, add folders of your own audio, and listen offline, with no account and no tracking."/>
     <meta name="twitter:image" content="https://apps.loyi.dev/piona/assets/piona-social.png"/>
     <meta property="og:image" content="https://apps.loyi.dev/piona/assets/piona-social.png"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -662,6 +662,19 @@ tbody tr:last-child td { border-bottom: none; }
 .doc__lede { margin-top: 20px; font-size: 19px; color: var(--on-surface-variant); }
 .doc__updated { margin-top: 22px; font-size: 14px; color: var(--outline); }
 
+.doc__tabs { display: flex; width: fit-content; gap: 2px; padding: 4px; margin-bottom: clamp(28px, 4vw, 40px); background: var(--surface-container); border-radius: 999px; }
+.doc__tabs a { padding: 10px 24px; font-size: 15px; font-weight: 600; border-radius: 999px; color: var(--on-surface-variant); }
+.doc__tabs a:hover { color: var(--on-surface); text-decoration: none; }
+.doc__tabs a[aria-current="true"] { background: var(--primary-container); color: var(--on-primary-container); }
+/* The address fragment names the anchor in front of a panel. That panel is shown; with no
+   fragment, the last one is. An anchor fixed to the viewport is always in view, so opening a
+   tab never scrolls the page. */
+.doc__tab-anchor { position: fixed; top: 0; }
+.doc__panel { display: none; }
+.doc__tab-anchor:target + .doc__panel, .doc__panel:last-child { display: block; }
+.doc__tab-anchor:target ~ .doc__panel:last-child { display: none; }
+.doc__tab-anchor:target + .doc__panel:last-child { display: block; }
+
 .doc__body { max-width: var(--measure); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 44px); }
 .doc section h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.015em; }
 .doc section > * + * { margin-top: 14px; }
@@ -676,6 +689,7 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: 50%;
   background: var(--primary);
 }
+.doc__link { font-weight: 600; }
 
 .callout {
   margin-top: clamp(40px, 5vw, 56px);
@@ -819,7 +833,7 @@ tbody tr:last-child td { border-bottom: none; }
         <div class="wrap">
           <div class="hero__grid">
             <div class="hero__copy">
-              <p class="eyebrow" data-reveal="true" style="--reveal-delay: 0ms">iOS TestFlight beta open · Android to follow</p>
+              <p class="eyebrow" data-reveal="true" style="--reveal-delay: 0ms">iOS TestFlight beta open · Android beta opening soon</p>
               <h1 data-reveal="true" style="--reveal-delay: 70ms">Podcasts, in as many lists as you like.</h1>
               <p class="hero__sub" data-reveal="true" style="--reveal-delay: 140ms">Keep one playlist for the commute, another for long walks, and another for shows you want to sit down with. Your queue is just one more playlist.</p>
               <div class="hero__actions" data-reveal="true" style="--reveal-delay: 210ms">
@@ -827,8 +841,8 @@ tbody tr:last-child td { border-bottom: none; }
                   <span class="store-badge__label">iOS TestFlight beta</span>
                   <span class="store-badge__detail">Open for testing</span></div>
                 <div class="store-badge">
-                  <span class="store-badge__label">Android coming later</span>
-                  <span class="store-badge__detail">Google Play release planned</span></div></div>
+                  <span class="store-badge__label">Android beta on Google Play</span>
+                  <span class="store-badge__detail">Opening soon</span></div></div>
               <ul class="assurances" data-reveal="true" style="--reveal-delay: 280ms">
                 <li>No ads, no analytics, no tracking</li>
                 <li>No account, no server</li></ul></div>
@@ -979,13 +993,14 @@ tbody tr:last-child td { border-bottom: none; }
                   <li>The shows you follow, your playlists, listening progress and history, and cached feeds</li>
                   <li>Downloaded audio and cached artwork</li>
                   <li>Permission to read any folder you linked</li>
-                  <li>Your settings, including each folder's own</li></ul></div></div>
+                  <li>Your settings, including each folder's own</li>
+                  <li>Diagnostic logs for investigating app problems, which Piona never uploads</li></ul></div></div>
             <a href="privacy/" class="panel__link">Read the full privacy policy</a></div></div></section>
       <section class="section section--tight">
         <div class="wrap">
           <div class="section__head" data-reveal="true" style="--reveal-delay: 0ms">
             <p class="eyebrow">Availability</p>
-            <h2>iOS beta now, Android later.</h2>
+            <h2>iOS beta now, Android beta soon.</h2>
             <p>Piona is built for iOS and Android on a shared core. Each app follows its platform's design; feature availability is confirmed for each release.</p></div>
           <div class="cards cards--2">
             <div class="platform" data-reveal="true" style="--reveal-delay: 0ms">
@@ -994,12 +1009,12 @@ tbody tr:last-child td { border-bottom: none; }
               <span class="pill">In closed testing</span></div>
             <div class="platform" data-reveal="true" style="--reveal-delay: 70ms">
               <h3>Android</h3>
-              <p>Phones, Android 9 or later</p>
-              <span class="pill">Coming later</span></div></div></div></section>
+              <p>64-bit ARM phones, Android 9 or later</p>
+              <span class="pill">Closed testing opens soon</span></div></div></div></section>
       <section class="closing">
         <div class="wrap">
           <h2 data-reveal="true" style="--reveal-delay: 0ms">Piona is in closed beta.</h2>
-          <p data-reveal="true" style="--reveal-delay: 70ms">It is being tested on iOS through TestFlight, with Android to follow. Join the beta, or check back once Piona is in the stores.</p>
+          <p data-reveal="true" style="--reveal-delay: 70ms">It is being tested on iOS through TestFlight, and Android testing opens soon on Google Play. Join the beta, or check back once Piona is in the stores.</p>
           <div class="closing__badge" data-reveal="true" style="--reveal-delay: 140ms">
             <a href="beta/">Join the beta</a></div>
           <p class="closing__detail" data-reveal="true" style="--reveal-delay: 210ms">

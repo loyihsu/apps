@@ -6,9 +6,9 @@
     <title>Join the Beta — Piona</title>
     <meta name="twitter:title" content="Join the Beta — Piona"/>
     <meta property="og:title" content="Join the Beta — Piona"/>
-    <meta name="description" content="Test Piona before it is released: who can join, how to join through TestFlight, and what testers are asked to do."/>
-    <meta name="twitter:description" content="Test Piona before it is released: who can join, how to join through TestFlight, and what testers are asked to do."/>
-    <meta property="og:description" content="Test Piona before it is released: who can join, how to join through TestFlight, and what testers are asked to do."/>
+    <meta name="description" content="Test Piona before it is released: who can join, how to join through TestFlight on iOS or Google Play on Android, and what testers are asked to do."/>
+    <meta name="twitter:description" content="Test Piona before it is released: who can join, how to join through TestFlight on iOS or Google Play on Android, and what testers are asked to do."/>
+    <meta property="og:description" content="Test Piona before it is released: who can join, how to join through TestFlight on iOS or Google Play on Android, and what testers are asked to do."/>
     <meta name="twitter:image" content="https://apps.loyi.dev/piona/assets/piona-social.png"/>
     <meta property="og:image" content="https://apps.loyi.dev/piona/assets/piona-social.png"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -662,6 +662,19 @@ tbody tr:last-child td { border-bottom: none; }
 .doc__lede { margin-top: 20px; font-size: 19px; color: var(--on-surface-variant); }
 .doc__updated { margin-top: 22px; font-size: 14px; color: var(--outline); }
 
+.doc__tabs { display: flex; width: fit-content; gap: 2px; padding: 4px; margin-bottom: clamp(28px, 4vw, 40px); background: var(--surface-container); border-radius: 999px; }
+.doc__tabs a { padding: 10px 24px; font-size: 15px; font-weight: 600; border-radius: 999px; color: var(--on-surface-variant); }
+.doc__tabs a:hover { color: var(--on-surface); text-decoration: none; }
+.doc__tabs a[aria-current="true"] { background: var(--primary-container); color: var(--on-primary-container); }
+/* The address fragment names the anchor in front of a panel. That panel is shown; with no
+   fragment, the last one is. An anchor fixed to the viewport is always in view, so opening a
+   tab never scrolls the page. */
+.doc__tab-anchor { position: fixed; top: 0; }
+.doc__panel { display: none; }
+.doc__tab-anchor:target + .doc__panel, .doc__panel:last-child { display: block; }
+.doc__tab-anchor:target ~ .doc__panel:last-child { display: none; }
+.doc__tab-anchor:target + .doc__panel:last-child { display: block; }
+
 .doc__body { max-width: var(--measure); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 44px); }
 .doc section h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.015em; }
 .doc section > * + * { margin-top: 14px; }
@@ -676,6 +689,7 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: 50%;
   background: var(--primary);
 }
+.doc__link { font-weight: 600; }
 
 .callout {
   margin-top: clamp(40px, 5vw, 56px);
@@ -820,41 +834,93 @@ tbody tr:last-child td { border-bottom: none; }
           <div class="doc__head" data-reveal="true" style="--reveal-delay: 0ms">
             <p class="eyebrow">Beta</p>
             <h1>Join the Piona beta</h1>
-            <p class="doc__lede">Piona is in closed testing on iOS through TestFlight, Apple's app for trying apps before they are released. Testers get each new build and can send feedback straight from their iPhone.</p>
-            <p class="doc__updated">Last updated 3 October 2026</p></div>
-          <div class="doc__body">
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Who can join</h2>
+            <p class="doc__lede">Piona is in closed testing on iOS through TestFlight, Apple's app for trying apps before they are released. Closed testing on Android opens soon through Google Play. Testers get each new build and can send feedback straight from their phone.</p>
+            <p class="doc__updated">Last updated 11 October 2026</p></div>
+          <div class="doc__tabbed">
+            <span class="doc__tab-anchor" id="android"></span>
+            <div class="doc__panel">              <nav class="doc__tabs" aria-label="Platform">
+                <a href="#ios" aria-current="false">iOS</a>
+                <a href="#android" aria-current="true">Android</a></nav>
+              <div class="doc__body">
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>Who can join</h2>
 
 
-              <ul class="doc__bullets">
-                <li>Anyone with an iPhone running iOS 26 or later.</li>
-                <li>You need the free TestFlight app from the App Store.</li>
-                <li>Places are limited. Once they are filled, the link stops accepting new testers.</li></ul>
-</section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">
-              <h2>How to join</h2>
-
-
-              <ul class="doc__bullets">
-                <li>Install TestFlight on your iPhone.</li>
-                <li>Open the Piona TestFlight invitation link on that iPhone.</li>
-                <li>Tap Accept, then Install. Piona appears on your Home Screen like any other app.</li></ul>
-              <p>New builds arrive through TestFlight, which can install them for you automatically.</p></section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>What we ask of testers</h2>
-              <p>Use Piona as you would any podcast app, and tell us when something gets in your way: a crash, a wrong result, or something that took longer than it should.</p>
-              <p>To report, take a screenshot and tap Share Beta Feedback, or open TestFlight and tap Send Beta Feedback. The same steps are in Piona's Settings, under Beta.</p>
-
+                  <ul class="doc__bullets">
+                    <li>Anyone with a phone running Android 9 or later. It needs a 64-bit ARM processor, which most phones sold in recent years have.</li>
+                    <li>You need a Google account, and Google Play on that phone.</li></ul>
 
 </section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Your privacy while testing</h2>
-              <p>Piona itself collects nothing, in testing or out of it — see the privacy policy. TestFlight is Apple's service, and it shows us each tester's device, system version and app version, how many sessions and crashes there have been, and any feedback you choose to send. When you join through the public link, your name and email address are not shown to us.</p>
+                <section data-reveal="true" style="--reveal-delay: 0ms">
+                  <h2>How to join</h2>
+                  <p>Android testing has not started yet. The two links for these steps appear here as soon as Google Play accepts testers.</p>
+
+                  <ul class="doc__bullets">
+                    <li>Join the Piona testers group on Google Groups. Anyone can join, and nobody has to approve you.</li>
+                    <li>With the same Google account, open Piona's testing page on Google Play and choose to become a tester.</li>
+                    <li>Follow that page to Google Play and install Piona.</li></ul>
+
+                  <p>Joining the group does not make you a tester on its own; the Google Play step does. If your account is already in Piona's internal testing, leave that first.</p>
+                  <p>New builds arrive through Google Play like any other app update.</p></section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>What we ask of testers</h2>
+                  <p>Use Piona as you would any podcast app, and tell us when something gets in your way: a crash, a wrong result, or something that took longer than it should.</p>
+                  <p>To report, send private feedback from Piona's page in Google Play, or email works@loyi.dev with the Piona version, your device and Android version, and the steps that led to the problem. We suggest removing anything private from screenshots first. Piona's Settings, under Beta, lists what to include.</p>
+
+
+
+</section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>Your privacy while testing</h2>
+                  <p>Piona itself sends us nothing, in testing or out of it — see the privacy policy.</p>
+                  <p>Google Play is Google's service. Android testers join through a Google Group that we own, so we can see members' email addresses. Private feedback you send through Google Play comes to us, and crash and performance reports reach us through Android vitals, which covers only devices whose owners have agreed to share diagnostic data with Google.</p>
+                  <p>If you email us, we receive your email address and whatever you write or attach. The privacy policy says how those messages are kept.</p>
+
 
 
 </section></div>
-          <div class="callout" data-reveal="true" style="--reveal-delay: 0ms">
-            <h2>Ready?</h2>
-            <p>Open this page on your iPhone, then tap the link to join through TestFlight.</p>
-            <a href="https://testflight.apple.com/join/6jwR3ywx" class="callout__action">Join on TestFlight</a></div></div></article></main>
+</div>
+            <span class="doc__tab-anchor" id="ios"></span>
+            <div class="doc__panel">
+              <nav class="doc__tabs" aria-label="Platform">
+                <a href="#ios" aria-current="true">iOS</a>
+                <a href="#android" aria-current="false">Android</a></nav>
+              <div class="doc__body">
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>Who can join</h2>
+
+
+                  <ul class="doc__bullets">
+                    <li>Anyone with an iPhone running iOS 26 or later.</li>
+                    <li>You need the free TestFlight app from the App Store.</li>
+                    <li>Places are limited. Once they are filled, the link stops accepting new testers.</li></ul>
+
+</section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">
+                  <h2>How to join</h2>
+
+
+                  <ul class="doc__bullets">
+                    <li>Install TestFlight on your iPhone.</li>
+                    <li>Open the Piona TestFlight invitation link on that iPhone.</li>
+                    <li>Tap Accept, then Install. Piona appears on your Home Screen like any other app.</li></ul>
+
+                  <p>New builds arrive through TestFlight, which can install them for you automatically.</p></section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>What we ask of testers</h2>
+                  <p>Use Piona as you would any podcast app, and tell us when something gets in your way: a crash, a wrong result, or something that took longer than it should.</p>
+                  <p>To report, take a screenshot and tap Share Beta Feedback, or open TestFlight and tap Send Beta Feedback. The same steps are in Piona's Settings, under Beta.</p>
+
+
+
+</section>
+                <section data-reveal="true" style="--reveal-delay: 0ms">                  <h2>Your privacy while testing</h2>
+                  <p>Piona itself sends us nothing, in testing or out of it — see the privacy policy.</p>
+                  <p>TestFlight is Apple's service, and it shows us each tester's device, system version and app version, how many sessions and crashes there have been, and any feedback you choose to send. When you join through the public link, your name and email address are not shown to us.</p>
+                  <p>If you email us, we receive your email address and whatever you write or attach. The privacy policy says how those messages are kept.</p>
+
+
+
+</section></div>
+              <div class="callout" data-reveal="true" style="--reveal-delay: 0ms">
+                <h2>Ready?</h2>
+                <p>Open this page on your iPhone, then tap the link to join through TestFlight.</p>
+                <a href="https://testflight.apple.com/join/6jwR3ywx" class="callout__action">Join on TestFlight</a></div></div></div></div></article></main>
     <footer class="site-footer">
       <div class="wrap site-footer__inner">
         <div class="site-footer__brand">

@@ -662,6 +662,19 @@ tbody tr:last-child td { border-bottom: none; }
 .doc__lede { margin-top: 20px; font-size: 19px; color: var(--on-surface-variant); }
 .doc__updated { margin-top: 22px; font-size: 14px; color: var(--outline); }
 
+.doc__tabs { display: flex; width: fit-content; gap: 2px; padding: 4px; margin-bottom: clamp(28px, 4vw, 40px); background: var(--surface-container); border-radius: 999px; }
+.doc__tabs a { padding: 10px 24px; font-size: 15px; font-weight: 600; border-radius: 999px; color: var(--on-surface-variant); }
+.doc__tabs a:hover { color: var(--on-surface); text-decoration: none; }
+.doc__tabs a[aria-current="true"] { background: var(--primary-container); color: var(--on-primary-container); }
+/* The address fragment names the anchor in front of a panel. That panel is shown; with no
+   fragment, the last one is. An anchor fixed to the viewport is always in view, so opening a
+   tab never scrolls the page. */
+.doc__tab-anchor { position: fixed; top: 0; }
+.doc__panel { display: none; }
+.doc__tab-anchor:target + .doc__panel, .doc__panel:last-child { display: block; }
+.doc__tab-anchor:target ~ .doc__panel:last-child { display: none; }
+.doc__tab-anchor:target + .doc__panel:last-child { display: block; }
+
 .doc__body { max-width: var(--measure); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 44px); }
 .doc section h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.015em; }
 .doc section > * + * { margin-top: 14px; }
@@ -676,6 +689,7 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: 50%;
   background: var(--primary);
 }
+.doc__link { font-weight: 600; }
 
 .callout {
   margin-top: clamp(40px, 5vw, 56px);
@@ -821,18 +835,17 @@ tbody tr:last-child td { border-bottom: none; }
             <p class="eyebrow">Legal</p>
             <h1>Privacy Policy</h1>
             <p class="doc__lede">Piona keeps what you create on your device. This page explains exactly what leaves it and what stays.</p>
-            <p class="doc__updated">Last updated 30 September 2026</p></div>
+            <p class="doc__updated">Last updated 11 October 2026</p></div>
           <div class="doc__body">
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>The short version</h2>
               <p>Piona does not collect or sell personal data. It has no accounts and no sign-in, no server of its own, and no third-party analytics, advertising, attribution or crash-reporting code.</p>
+              <p>Piona has no server of its own and the developer receives none of your data. A few features send requests directly from your device to third-party services, listed below.</p>
 
-              <ul class="doc__bullets">
-                <li>Data collected: none.</li>
-                <li>Data linked to you: none.</li>
-                <li>Data used for tracking: none.</li>
-                <li>Third-party software development kits that collect data: none.</li></ul>
+
+
 </section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>What leaves your device</h2>
+            <section data-reveal="true" style="--reveal-delay: 0ms">
+              <h2>What leaves your device</h2>
               <p>These are Piona's direct content requests. Age-appropriate experience checks run through your platform's service.</p>
               <div class="table-scroll">
                 <table>
@@ -861,12 +874,14 @@ tbody tr:last-child td { border-bottom: none; }
                 </table></div>
               <ul class="doc__bullets">
                 <li>No request includes a device, advertising or account identifier, or any other identifier made up by the app.</li>
-                <li>Piona shares no data with any third party and has no analytics or advertising partners. Each request goes straight from your device to the host listed.</li>
+                <li>The developer does not sell or share your data, and Piona has no analytics or advertising partners. Each request goes straight from your device to the host listed.</li>
                 <li>Feed, artwork and audio hosts are chosen by the shows you open and follow, not by Piona. Artwork in search results comes from Apple.</li></ul>
-</section>
+
+              <p>Search uses Apple's iTunes Search API. When you search, your search term and your device's region are sent directly from your device to Apple to return results. Piona uses the response only to show results and does not keep your search terms or send them to the developer. Apple handles these requests under its own privacy policy.</p></section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>What podcast hosts can see</h2>
               <p>Fetching a feed or an audio file is an ordinary web request to the host that publishes it. As with any app or browser, that host can see your IP address and a user agent. Piona adds no identifier of its own and has no relationship with these hosts.</p>
               <p>Some hosts still serve feeds and audio over plain HTTP rather than HTTPS. Piona allows this, because refusing would quietly break those shows. Directory requests and the developer photo always use HTTPS.</p>
+
 
 
 </section>
@@ -880,10 +895,13 @@ tbody tr:last-child td { border-bottom: none; }
                 <li>Downloaded audio files.</li>
                 <li>Cached artwork.</li>
                 <li>Permission to read any folder you linked, so that access survives a restart.</li>
-                <li>Your settings: whether explicit content is on, whether finished episodes leave a playlist automatically, whether finished downloads are deleted, and for each folder, which file date to use and whether its episodes can be downloaded.</li></ul>
+                <li>Your settings: whether explicit content is on, whether finished episodes leave a playlist automatically, whether finished downloads are deleted, and for each folder, which file date to use and whether its episodes can be downloaded.</li>
+                <li>Diagnostic logs: up to the newest 500 entries, each message limited to 2,000 characters. They can include file paths, feed addresses and error details, and Piona never uploads them. In testing builds you can read and clear them in Settings. On iOS the file is left out of device backups.</li></ul>
+
               <p>None of it is synced or sent to Piona. It stays until you remove it or delete the app, and other apps cannot read it.</p></section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Folders of your own audio</h2>
               <p>When you link a folder, Piona reads the names, durations and dates of the audio files in it to build a show, and keeps permission to read the folder again after a restart. Piona does not change your linked folder or upload its files. It may keep a copy of cover art in the app's private on-device cache.</p>
+
 
 
 </section>
@@ -893,9 +911,11 @@ tbody tr:last-child td { border-bottom: none; }
               <p>On iOS, Piona requests your age range only after you tap Continue on the Age Confirmation page or choose Age Confirmation in Settings or Library. Its saved decision reflects the last response it received; changes made in system settings are not checked until you request confirmation again. Apple or Google manages age sharing under its own settings and policies, and determines whether a later request shows another prompt.</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Children</h2>
               <p>Piona is not directed at children and collects no data from anyone, children included. The podcasts it plays come from third parties and are not reviewed by Piona. It relies on each publisher's explicit label, which covers a whole show rather than single episodes.</p>
+
 
 
 </section>
@@ -903,15 +923,24 @@ tbody tr:last-child td { border-bottom: none; }
               <p>On Android, Piona turns off automatic backup, so your library is not copied to Google's servers. On iOS, whether Piona's data is included in iCloud or computer backups depends on your device's backup settings. Piona itself uploads nothing.</p>
 
 
+
 </section>
-            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Testing through TestFlight</h2>
-              <p>While Piona is in testing, it is distributed through TestFlight, which is Apple's service and covered by Apple's privacy policy rather than this one. TestFlight shows the developer each tester's device, system version and app version, how many sessions and crashes there have been, and any feedback you choose to send, which can include a screenshot and crash details. If you join through a public link, your name and email address are not shown; if you were invited by email, they are.</p>
+            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Testing on iOS through TestFlight</h2>
+              <p>While Piona is in testing on iOS, it is distributed through TestFlight, which is Apple's service and covered by Apple's privacy policy rather than this one. TestFlight shows the developer each tester's device, system version and app version, how many sessions and crashes there have been, and any feedback you choose to send, which can include a screenshot and crash details. If you join through a public link, your name and email address are not shown; if you were invited by email, they are.</p>
+
+
+
+</section>
+            <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Testing on Android through Google Play</h2>
+              <p>When Piona is tested on Android, it is distributed through Google Play, which is Google's service and covered by Google's privacy policy rather than this one. Testers join by adding themselves to a Google Group, and the developer, as the group's owner, can see members' email addresses. Feedback you send through Google Play's private tester feedback goes to the developer. Crash and performance reports reach the developer through Android vitals, a Google Play feature that covers only devices whose owners have agreed to share diagnostic data with Google.</p>
+
 
 
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Emailing the developer</h2>
-              <p>In testing builds, How to Report a Problem in Settings ends with a link to email the developer. Tapping it opens your own email app with the address filled in. Piona adds nothing to the message and does not send it; your email app sends it only if you choose to.</p>
-              <p>If you send an email, the developer receives your email address and whatever you write or attach, such as screenshots. It is used only to reply to you and to fix what you reported, and is never used for marketing or passed on to anyone else. To have it deleted, ask at the same address.</p>
+              <p>In testing builds, How to Report a Problem in Settings includes a link to email the developer. Tapping it opens your own email app with the address filled in. Piona adds nothing to the message and does not send it; your email app sends it only if you choose to.</p>
+              <p>If you send an email, including feedback emailed from Google Play testing, the developer receives your email address and whatever you write or attach, such as screenshots. Messages arrive in the developer's iCloud Mail account, which Apple provides. They are used only to reply to you and to fix what you reported, and are never used for marketing or passed on to anyone else. Messages are kept so earlier reports can be checked if the same problem comes up again. To have yours deleted, ask at the same address.</p>
+
 
 
 </section>
@@ -921,9 +950,11 @@ tbody tr:last-child td { border-bottom: none; }
               <p>You can turn explicit content back off in Settings at any time. Deleting the app also withdraws every permission Piona holds, including access to your folders.</p>
 
 
+
 </section>
             <section data-reveal="true" style="--reveal-delay: 0ms">              <h2>Changes to this policy</h2>
               <p>If the way Piona handles data changes, this page will be updated to match, along with the date at the top.</p>
+
 
 
 </section></div>
